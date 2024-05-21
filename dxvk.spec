@@ -25,6 +25,7 @@ BuildRequires:  pkgconfig(libdisplay-info)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:	vulkan-headers
 BuildRequires:	spirv-headers
+BuildRequires:	glslang
 
 BuildRequires:	cross-x86_64-w64-mingw32-binutils
 BuildRequires:	cross-x86_64-w64-mingw32-gcc
