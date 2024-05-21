@@ -1,0 +1,11 @@
+diff -up dxvk-2.3.1/src/d3d9/d3d9_mem.cpp.omv~ dxvk-2.3.1/src/d3d9/d3d9_mem.cpp
+--- dxvk-2.3.1/src/d3d9/d3d9_mem.cpp.omv~	2024-05-21 22:22:50.398412339 +0200
++++ dxvk-2.3.1/src/d3d9/d3d9_mem.cpp	2024-05-21 22:22:59.670608188 +0200
+@@ -4,6 +4,7 @@
+ #include "../util/log/log.h"
+ #include "../util/util_likely.h"
+ #include <utility>
++#include <algorithm>
+ 
+ #ifdef D3D9_ALLOW_UNMAPPING
+ #include <sysinfoapi.h>
