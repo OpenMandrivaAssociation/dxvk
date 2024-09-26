@@ -2,7 +2,7 @@
 %undefine _debugsource_packages
 
 Name:		dxvk
-Version:	2.4
+Version:	2.4.1
 Release:        1
 Summary:	Vulkan-based D3D11 implementation for Linux / Wine
 License:	zlib-acknowledgement
