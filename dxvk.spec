@@ -47,7 +47,6 @@ Supplements:	proton
 Supplements:	proton-experimental
 
 %patchlist
-dxvk-2.3.1-compile.patch
 
 %description
 Provides a Vulkan-based implementation of DXGI and D3D11 in order to run 3D applications on Linux using Wine
