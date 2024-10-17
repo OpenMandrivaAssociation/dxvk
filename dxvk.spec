@@ -2,7 +2,7 @@
 %undefine _debugsource_packages
 
 Name:		dxvk
-Version:	2.4
+Version:	2.4.1
 Release:        1
 Summary:	Vulkan-based D3D11 implementation for Linux / Wine
 License:	zlib-acknowledgement
@@ -47,7 +47,6 @@ Supplements:	proton
 Supplements:	proton-experimental
 
 %patchlist
-dxvk-2.3.1-compile.patch
 
 %description
 Provides a Vulkan-based implementation of DXGI and D3D11 in order to run 3D applications on Linux using Wine
