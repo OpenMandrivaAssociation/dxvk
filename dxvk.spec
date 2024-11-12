@@ -8,7 +8,7 @@ Summary:	Vulkan-based D3D11 implementation for Linux / Wine
 License:	zlib-acknowledgement
 Group:		System/Emulators/PC
 URL:		https://github.com/doitsujin/dxvk
-Source0:	https://github.com/doitsujin/dxvk/archive/v%{version}.tar.gz
+Source0:	https://github.com/doitsujin/dxvk/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	https://gitlab.freedesktop.org/frog/libdisplay-info/-/archive/windows/libdisplay-info-windows.tar.bz2
 
 BuildRequires:  cmake
