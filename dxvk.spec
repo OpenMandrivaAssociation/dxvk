@@ -54,7 +54,7 @@ Provides a Vulkan-based implementation of DXGI and D3D11 in order to run 3D appl
 %prep
 %autosetup -p1
 # eat up your libdisplay-info!
-sed -i '/=static/d' meson.build
+sed -i '/library=static/d' meson.build
 
 # Upstream, vulkan-headers and spirv-headers are pulled in as
 # git submodules. Let's copy in system headers to make sure the
