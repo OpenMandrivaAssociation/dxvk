@@ -36,7 +36,8 @@ BuildRequires:  cross-i686-w64-mingw32-libc
 
 # Loaded at runtime
 Requires:       libSDL2-2.0.so.0()(64bit)
-Requires:       libSDL2-2.0.so.0
+# Required if the 32-bit DLL is used, thankfully 32-bit is getting rare
+Recommends:     libSDL2-2.0.so.0
 
 BuildArch:	noarch
 
