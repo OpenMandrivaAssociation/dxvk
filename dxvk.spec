@@ -2,7 +2,7 @@
 %undefine _debugsource_packages
 
 Name:		dxvk
-Version:	2.6.2
+Version:	2.7.1
 Release:        1
 Summary:	Vulkan-based D3D11 implementation for Linux / Wine
 License:	zlib-acknowledgement
@@ -18,7 +18,7 @@ BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  (wine or proton or proton-experimental)
+BuildRequires:  (wine or proton or proton-experimental or proton-bleeding-edge)
 BuildRequires:  xz
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(libdisplay-info)
@@ -41,7 +41,7 @@ Requires:       libSDL2-2.0.so.0
 BuildArch:	noarch
 
 Provides:	direct3d-implementation
-Requires:	(wine or proton or proton-experimental)
+Requires:	(wine or proton or proton-experimental or proton-bleeding-edge)
 Supplements:	wine
 Supplements:	proton
 Supplements:	proton-experimental
