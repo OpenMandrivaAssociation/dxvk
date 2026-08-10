@@ -1,0 +1,36 @@
+OMV mingw uses the win32 thread model and does not ship libpthread.
+Meson's dependency('threads') still injects -lpthread on mingw, which
+then fails to link. DXVK uses native Win32 threads on Windows anyway.
+
+diff -up dxvk-3.0.2/src/dxvk/meson.build.omv~ dxvk-3.0.2/src/dxvk/meson.build
+--- dxvk-3.0.2/src/dxvk/meson.build.omv~	2026-07-17 23:41:00.000000000 +0200
++++ dxvk-3.0.2/src/dxvk/meson.build	2026-08-10 22:30:00.000000000 +0200
+@@ -97,7 +97,11 @@
+   ]
+ endif
+ 
+-dxvk_extra_deps = [ dependency('threads') ]
++if platform == 'windows'
++  dxvk_extra_deps = []
++else
++  dxvk_extra_deps = [ dependency('threads') ]
++endif
+ if platform == 'linux'
+   dxvk_extra_deps += [ cpp.find_library('dl', required: false) ]
+ endif
+diff -up dxvk-3.0.2/src/vulkan/meson.build.omv~ dxvk-3.0.2/src/vulkan/meson.build
+--- dxvk-3.0.2/src/vulkan/meson.build.omv~	2026-07-17 23:41:00.000000000 +0200
++++ dxvk-3.0.2/src/vulkan/meson.build	2026-08-10 22:30:00.000000000 +0200
+@@ -3,7 +3,11 @@
+   'vulkan_names.cpp',
+ ])
+ 
+-thread_dep = dependency('threads')
++if platform == 'windows'
++  thread_dep = declare_dependency()
++else
++  thread_dep = dependency('threads')
++endif
+ 
+ vkcommon_lib = static_library('vkcommon', vkcommon_src,
+   dependencies        : [ thread_dep ],

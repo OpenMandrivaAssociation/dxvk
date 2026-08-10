@@ -8,8 +8,11 @@ Summary:	Vulkan-based D3D11 implementation for Linux / Wine
 License:	zlib-acknowledgement
 Group:		System/Emulators/PC
 URL:		https://github.com/doitsujin/dxvk
+# GitHub archives omit git submodules. Pin the dxbc-spirv commit used by v3.0.2.
+%define dxbc_spirv_commit 887bb6c4c4af01a9ccb757e92d35fca3896794f6
 Source0:	https://github.com/doitsujin/dxvk/archive/v%{version}.tar.gz
 Source1:	https://gitlab.freedesktop.org/frog/libdisplay-info/-/archive/windows/libdisplay-info-windows.tar.bz2
+Source2:	https://github.com/doitsujin/dxbc-spirv/archive/%{dxbc_spirv_commit}/dxbc-spirv-%{dxbc_spirv_commit}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -48,6 +51,7 @@ Supplements:	proton
 Supplements:	proton-experimental
 
 %patchlist
+dxvk-3.0.2-win32-threads.patch
 
 %description
 Provides a Vulkan-based implementation of DXGI and D3D11 in order to run 3D applications on Linux using Wine
@@ -70,6 +74,12 @@ cd subprojects
 rmdir libdisplay-info
 tar xf %{S:1}
 mv libdisplay-info-* libdisplay-info
+rmdir dxbc-spirv
+tar xf %{S:2}
+mv dxbc-spirv-* dxbc-spirv
+# dxbc-spirv hardcodes a nested SPIRV-Headers submodule path
+mkdir -p dxbc-spirv/submodules/spirv_headers/include
+cp -a %{_includedir}/spirv dxbc-spirv/submodules/spirv_headers/include
 
 %conf
 mkdir ../build
@@ -78,6 +88,7 @@ meson setup \
     --strip \
     --buildtype "release" \
     --unity off \
+    --wrap-mode nodownload \
     --prefix /%{name} \
     ../build
 
@@ -87,6 +98,7 @@ meson setup \
     --strip \
     --buildtype "release" \
     --unity off \
+    --wrap-mode nodownload \
     --prefix /%{name} \
     ../build32
 
