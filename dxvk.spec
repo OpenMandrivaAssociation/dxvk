@@ -2,14 +2,14 @@
 %undefine _debugsource_packages
 
 Name:		dxvk
-Version:	3.0.2
+Version:	3.1.1
 Release:        1
 Summary:	Vulkan-based D3D11 implementation for Linux / Wine
 License:	zlib-acknowledgement
 Group:		System/Emulators/PC
 URL:		https://github.com/doitsujin/dxvk
-# GitHub archives omit git submodules. Pin the dxbc-spirv commit used by v3.0.2.
-%define dxbc_spirv_commit 887bb6c4c4af01a9ccb757e92d35fca3896794f6
+# GitHub archives omit git submodules. Pin the dxbc-spirv commit used by v%{version}.
+%define dxbc_spirv_commit bf14419e5fa7eacb817b7b632f03cb61d61bbad7
 Source0:	https://github.com/doitsujin/dxvk/archive/v%{version}.tar.gz
 Source1:	https://gitlab.freedesktop.org/frog/libdisplay-info/-/archive/windows/libdisplay-info-windows.tar.bz2
 Source2:	https://github.com/doitsujin/dxbc-spirv/archive/%{dxbc_spirv_commit}/dxbc-spirv-%{dxbc_spirv_commit}.tar.gz
